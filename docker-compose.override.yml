@@ -1,0 +1,30 @@
+services:
+  vllm:
+    image: python:3.11-alpine
+    command: python3 -m http.server 8000
+    deploy:
+      resources:
+        reservations:
+          devices: []
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  casdoor:
+    ports:
+      - "127.0.0.1:47092:8000"
+
+  lobe-chat:
+    environment:
+      - APP_URL=https://54-72-107-165.sslip.io
+      - NEXTAUTH_URL=https://54-72-107-165.sslip.io
+      - AUTH_URL=https://54-72-107-165.sslip.io
+      - AUTH_CASDOOR_ISSUER=https://54-72-107-165.sslip.io:47002
+      - MINIO_API_CORS_ALLOW_ORIGIN=https://54-72-107-165.sslip.io
+
+  mcphub:
+    environment:
+      - ADMIN_PASSWORD=esade2026

@@ -2,8 +2,6 @@ services:
   casdoor:
     image: casbin/casdoor:v2.13.0
     container_name: casdoor
-    ports:
-      - "${CASDOOR_PORT:-47002}:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -167,12 +165,7 @@ services:
       --tool-call-parser gemma4
       --reasoning-parser gemma4
     deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      resources: {}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]

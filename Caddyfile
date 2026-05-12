@@ -1,0 +1,7 @@
+54-72-107-165.sslip.io {
+    reverse_proxy localhost:47000
+}
+
+54-72-107-165.sslip.io:47002 {
+    reverse_proxy localhost:47092
+}
