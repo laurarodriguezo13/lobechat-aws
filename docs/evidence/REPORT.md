@@ -7,8 +7,8 @@
 | Student name | Laura Rodriguez Ortega |
 | ESADE email | laura.rodriguez15@alumni.esade.edu |
 | GitHub repo URL | https://github.com/laurarodriguezo13/lobechat-aws (private; `joseporiolrius` invited as collaborator) |
-| Latest commit SHA | `git rev-parse HEAD` — update after final commit |
-| Final tag | `final-v0.6.0` — tag after final commit with `cz bump` |
+| Latest commit SHA | `2e774ce6ad9026baa0a2394375d5b404911acaaa` |
+| Final tag | `final-v0.6.0` |
 
 ## 2. Public URL
 
