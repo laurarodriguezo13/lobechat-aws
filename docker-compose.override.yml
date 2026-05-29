@@ -19,11 +19,11 @@ services:
 
   lobe-chat:
     environment:
-      - APP_URL=https://54-72-107-165.sslip.io
-      - NEXTAUTH_URL=https://54-72-107-165.sslip.io
-      - AUTH_URL=https://54-72-107-165.sslip.io
-      - AUTH_CASDOOR_ISSUER=https://54-72-107-165.sslip.io:47002
-      - MINIO_API_CORS_ALLOW_ORIGIN=https://54-72-107-165.sslip.io
+      - APP_URL=https://63-32-12-56.sslip.io
+      - NEXTAUTH_URL=https://63-32-12-56.sslip.io
+      - AUTH_URL=https://63-32-12-56.sslip.io
+      - AUTH_CASDOOR_ISSUER=https://63-32-12-56.sslip.io:47002
+      - MINIO_API_CORS_ALLOW_ORIGIN=https://63-32-12-56.sslip.io
 
   mcphub:
     environment:

@@ -36,7 +36,7 @@
       "createdTime": "2025-08-11T17:06:30+08:00",
       "displayName": "LobeChat",
       "logo": "https://lobehub.com/icon-192x192.png",
-      "homepageUrl": "https://54-72-107-165.sslip.io",
+      "homepageUrl": "https://63-32-12-56.sslip.io",
       "description": "",
       "organization": "lobechat",
       "cert": "cert-built-in",
@@ -342,7 +342,7 @@
       "clientId": "a387a4892ee19b1a2249",
       "clientSecret": "dbf205949d704de81b0b5b3603174e23fbecc354",
       "redirectUris": [
-        "https://54-72-107-165.sslip.io/api/auth/callback/casdoor"
+        "https://63-32-12-56.sslip.io/api/auth/callback/casdoor"
       ],
       "forcedRedirectOrigin": "",
       "tokenFormat": "JWT",
