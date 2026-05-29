@@ -18,6 +18,8 @@ services:
       - "127.0.0.1:47092:8000"
 
   lobe-chat:
+    extra_hosts:
+      - "63-32-12-56.sslip.io:host-gateway"
     environment:
       - APP_URL=https://63-32-12-56.sslip.io
       - NEXTAUTH_URL=https://63-32-12-56.sslip.io
