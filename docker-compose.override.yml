@@ -27,6 +27,10 @@ services:
       - AUTH_CASDOOR_ISSUER=https://63-32-12-56.sslip.io:47002
       - MINIO_API_CORS_ALLOW_ORIGIN=https://63-32-12-56.sslip.io
       - OPENAI_PROXY_URL=http://openrouter-proxy:8080/api/v1
+      # Disable native OpenRouter provider so ALL LLM requests go through
+      # OPENAI_PROXY_URL → openrouter-proxy (which caps max_tokens to fix 402)
+      - ENABLED_OPENROUTER=0
+      - OPENAI_MODEL_LIST=meta-llama/llama-4-scout,openai/gpt-oss-20b:free,deepseek/deepseek-v4-flash:free
 
   openrouter-proxy:
     image: node:20-alpine
