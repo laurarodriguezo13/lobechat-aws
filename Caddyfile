@@ -7,5 +7,12 @@
 }
 
 minio.63-32-12-56.sslip.io {
-    reverse_proxy localhost:47005
+    reverse_proxy localhost:47005 {
+        flush_interval -1
+        header_up Host {host}
+        header_up X-Forwarded-Proto https
+    }
+    request_body {
+        max_size 200MB
+    }
 }

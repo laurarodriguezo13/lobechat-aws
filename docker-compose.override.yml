@@ -28,9 +28,10 @@ services:
       - MINIO_API_CORS_ALLOW_ORIGIN=https://63-32-12-56.sslip.io
       - OPENAI_PROXY_URL=http://openrouter-proxy:8080/api/v1
       - ENABLED_OPENROUTER=1
-      # MinIO public domain via Caddy HTTPS proxy (avoids mixed-content + blocked port)
-      - S3_ENDPOINT=http://minio:9000
+      # MinIO via Caddy HTTPS proxy (avoids mixed-content + blocked port 47005)
+      - S3_ENDPOINT=https://minio.63-32-12-56.sslip.io
       - S3_PUBLIC_DOMAIN=https://minio.63-32-12-56.sslip.io
+      - NEXT_PUBLIC_S3_DOMAIN=https://minio.63-32-12-56.sslip.io
 
   openrouter-proxy:
     image: node:20-alpine
@@ -39,6 +40,10 @@ services:
     volumes:
       - ./proxy.js:/app/proxy.js:ro
     restart: unless-stopped
+
+  minio:
+    environment:
+      - MINIO_API_CORS_ALLOW_ORIGIN=https://63-32-12-56.sslip.io
 
   mcphub:
     environment:
