@@ -20,9 +20,7 @@ services:
     container_name: lobe-chat
     ports:
       - "${LOBECHAT_PORT:-47000}:3210"
-    volumes:
-      # HOTFIX disabled: patch was built for a different LobeChat version
-      # - ./patches/route.js:/app/.next/server/app/(backend)/trpc/tools/[trpc]/route.js:ro
+    # patches/route.js mount disabled: incompatible with current LobeChat version
     environment:
       # App configuration
       - APP_URL=http://${HOST_DOMAIN:-localhost}:${LOBECHAT_PORT:-47000}
