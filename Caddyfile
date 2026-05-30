@@ -5,3 +5,7 @@
 63-32-12-56.sslip.io:47002 {
     reverse_proxy localhost:47092
 }
+
+minio.63-32-12-56.sslip.io {
+    reverse_proxy localhost:47005
+}
