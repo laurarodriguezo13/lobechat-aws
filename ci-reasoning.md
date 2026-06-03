@@ -5,8 +5,8 @@
 <!-- Screenshot of the GitHub Actions run — added after first push -->
 ![Actions run](docs/evidence/ci/actions-run.png)
 
-**Actions run URL:** <!-- TODO: paste URL after push -->  
-**Commit SHA:** <!-- TODO: paste SHA after push -->
+**Actions run URL:** https://github.com/laurarodriguezo13/lobechat-aws/actions/runs/26869907862/job/79242391155  
+**Commit SHA:** f83cbf7
 
 ---
 
