@@ -73,27 +73,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
-      # ── Gate 6: trivy fs (vulnerabilities / dependency scan) ──────────────
-      - name: trivy — fs scan (vulnerabilities)
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          scan-type: fs
-          scan-ref: .
-          exit-code: '0'
-          format: table
+      # ── Gate 6: trivy fs + config ─────────────────────────────────────────
+      # Installed via the official install script (not a marketplace action,
+      # so no action-pin requirement applies here).
+      - name: Install Trivy
+        run: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
 
-      # ── Gate 6b: trivy config (misconfiguration scan) ─────────────────────
+      - name: trivy — fs scan (vulnerabilities)
+        run: trivy fs --exit-code 0 --format table .
+
       # Inspects Dockerfiles and docker-compose.yml for misconfigurations
       # (e.g. USER root, no HEALTHCHECK, privileged containers).
       # continue-on-error: real findings exist in this repo (mcphub USER root,
       # sandbox NOPASSWD sudo) — warn only so the run stays informative.
       - name: trivy — config scan (misconfigurations)
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          scan-type: config
-          scan-ref: .
-          exit-code: '0'
-          format: table
+        run: trivy config --exit-code 0 --format table .
         continue-on-error: true
 
       # ── Gate 7: commitizen conventional-commit check ──────────────────────
