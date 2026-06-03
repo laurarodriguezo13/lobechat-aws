@@ -42,8 +42,8 @@ jobs:
       # ${VAR} secrets (NEXT_AUTH_SECRET, KEY_VAULTS_SECRET, HF_TOKEN, etc.)
       # that are undefined in CI — config -q would fail with "variable is not set".
       # We copy .env.example → .env to supply placeholder values.
-      # SAFE: .env.example contains no real secrets (placeholder strings only),
-      # and .gitignore already excludes .env so the copy is never committed.
+      # SAFE: .env.example contains only placeholder strings, and
+      # .gitignore already excludes .env so the copy is never committed.
       - name: docker compose config — validate without running
         run: |
           cp .env.example .env
@@ -77,7 +77,9 @@ jobs:
       # Installed via the official install script (not a marketplace action,
       # so no action-pin requirement applies here).
       - name: Install Trivy
-        run: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+            | sudo sh -s -- -b /usr/local/bin
 
       - name: trivy — fs scan (vulnerabilities)
         run: trivy fs --exit-code 0 --format table .
@@ -106,6 +108,8 @@ jobs:
       # explicitly prohibited by the exam's hard rule.
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: false
 
       - name: commitizen — conventional commit check (new commits only)
         run: uv run cz check --rev-range origin/main..HEAD
